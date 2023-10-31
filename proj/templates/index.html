@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="styles.css">
+    <title>Traveler's Advisor</title>
+</head>
+<body>
+    <div class="center-title">
+        <h1 class="small-title">Traveler's Advisor</h1>
+        <p>Your Personalized Hotel Recommendation Guide</p>
+    </div>
+
+    <form action="/search" method="POST">
+        <label for="pool">Select Pool:</label>
+        <select name="pool" id="pool">
+            {% for pool in unique_pool_types %}
+                <option value="{{ pool }}">{{ pool }}</option>
+            {% endfor %}
+        </select>
+        
+        <br><br>
+        <label for "country">Select Country:</label>
+        <select name="country" id="country">
+            {% for country in unique_countries %}
+                <option value="{{ country }}">{{ country }}</option>
+            {% endfor %}
+        </select>
+
+        <br><br>
+        <label for="metro">Select if you want to be close to the metro:</label>
+        <select name="metro" id="metro">
+            {% for metro in unique_metro_types %}
+                <option value="{{ metro }}">{{ metro }}</option>
+            {% endfor %}
+        </select>
+        
+        <br><br>
+        <label for="min_score">Minimum Score:</label>
+        <input type="number" name="min_score" step="0.01" min="0" max="10">
+        
+        <br><br>
+        <input type="submit" value="Search">
+    </form>
+</body>
+</html>
